@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Stars 6 - Reading Time: An Experience Like No Other</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Fredoka:wght@400;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #047857;
+            --primary-dark: #065f46;
+            --secondary: #10b981;
+            --accent: #f59e0b;
+            --bg-light: #ecfdf5;
+            --card-bg: #ffffff;
+            --text-dark: #064e3b;
+            --correct: #16a34a;
+            --incorrect: #dc2626;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Nunito', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 850px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* Header Styling */
+        .header-card {
+            background: linear-gradient(135deg, #065f46 0%, #047857 100%);
+            color: #ffffff;
+            border: 4px solid #34d399;
+            border-radius: 24px;
+            padding: 22px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(4, 120, 87, 0.25);
+            position: relative;
+        }
+
+        .school-info {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px dashed #34d399;
+        }
+
+        .school-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: white;
+            font-family: 'Fredoka', cursive;
+            font-weight: 700;
+            font-size: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 18px;
+            border: 2px solid #ffffff;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+
+        .school-text {
+            text-align: left;
+        }
+
+        .school-text .ar {
+            font-weight: 800;
+            color: #ffffff;
+            font-size: 19px;
+            letter-spacing: 0.5px;
+        }
+
+        .school-text .en {
+            font-size: 12px;
+            color: #a7f3d0;
+            letter-spacing: 0.8px;
+            font-weight: 700;
+        }
+
+        .grade-badge {
+            background: #fef08a;
+            color: #065f46;
+            font-weight: 800;
+            font-size: 14px;
+            padding: 6px 14px;
+            border-radius: 20px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+
+        .title-badge {
+            background: #fde68a;
+            color: #065f46;
+            font-family: 'Fredoka', cursive;
+            display: inline-block;
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 21px;
+            margin-bottom: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+
+        /* Calligraphy Teacher Box */
+        .teacher-box {
+            background: rgba(255, 255, 255, 0.12);
+            border: 2px dashed #a7f3d0;
+            border-radius: 18px;
+            padding: 12px;
+            margin-top: 10px;
+        }
+
+        .teacher-box .prep-title {
+            font-size: 12px;
+            color: #a7f3d0;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .teacher-box h3 {
+            color: #fef08a;
+            font-size: 34px;
+            font-family: 'Great Vibes', cursive;
+            font-weight: 500;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            margin-top: 2px;
+        }
+
+        .student-section {
+            background: white;
+            border: 3px solid #34d399;
+            border-radius: 20px;
+            padding: 15px 20px;
+            box-shadow: 0 4px 12px rgba(4, 120, 87, 0.08);
+        }
+
+        .student-section label {
+            font-weight: 800;
+            color: var(--primary);
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .student-section input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #10b981;
+            border-radius: 12px;
+            font-size: 16px;
+            background: white;
+            outline: none;
+            color: var(--text-dark);
+            font-weight: 700;
+        }
+
+        .section-card {
+            background: white;
+            border-radius: 20px;
+            padding: 20px;
+            border: 3px solid #a7f3d0;
+            box-shadow: 0 6px 15px rgba(4, 120, 87, 0.05);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px dashed #a7f3d0;
+        }
+
+        .sec-num {
+            background: var(--primary);
+            color: #ffffff;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-family: 'Fredoka', cursive;
+        }
+
+        .sec-title {
+            font-size: 19px;
+            font-weight: 800;
+            color: var(--primary);
+            font-family: 'Fredoka', cursive;
+        }
+
+        .story-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        @media (max-width: 650px) {
+            .story-grid { grid-template-columns: 1fr; }
+        }
+
+        .story-part {
+            background: #f0fdf4;
+            border: 2px solid #a7f3d0;
+            border-radius: 16px;
+            padding: 15px;
+            position: relative;
+        }
+
+        .story-num {
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            background: #059669;
+            color: white;
+            font-weight: 800;
+            padding: 2px 10px;
+            border-radius: 10px;
+            font-size: 12px;
+        }
+
+        .story-text {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #064e3b;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .audio-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            font-size: 12px;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: 0.2s;
+        }
+
+        .audio-btn:hover {
+            background: var(--primary-dark);
+            transform: scale(1.03);
+        }
+
+        .match-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .match-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #f0fdf4;
+            padding: 10px 15px;
+            border-radius: 12px;
+            border: 1px solid #a7f3d0;
+        }
+
+        .word-badge {
+            font-weight: 800;
+            color: var(--primary);
+            width: 130px;
+        }
+
+        .match-select {
+            padding: 8px;
+            border-radius: 8px;
+            border: 2px solid #10b981;
+            font-weight: 700;
+            background: white;
+            color: var(--text-dark);
+            outline: none;
+        }
+
+        .quiz-item {
+            margin-bottom: 15px;
+            background: #f0fdf4;
+            padding: 14px;
+            border-radius: 12px;
+            border: 1px solid #a7f3d0;
+        }
+
+        .quiz-q {
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--primary);
+        }
+
+        .quiz-input {
+            width: 100%;
+            padding: 10px 12px;
+            border: 2px solid #34d399;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            font-weight: 600;
+            outline: none;
+        }
+
+        .quiz-input:focus {
+            border-color: var(--primary);
+        }
+
+        .ans-btn {
+            background: #10b981;
+            color: white;
+            border: none;
+            padding: 7px 14px;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            font-size: 12px;
+            transition: 0.2s;
+        }
+
+        .ans-btn:hover {
+            background: #059669;
+        }
+
+        .model-ans {
+            display: none;
+            background: #dcfce7;
+            color: #15803d;
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 13px;
+            margin-top: 8px;
+            font-weight: 700;
+            border: 1px solid #86efac;
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .opt-btn {
+            text-align: left;
+            padding: 8px 12px;
+            border: 2px solid #34d399;
+            background: white;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .opt-btn.correct {
+            background: #dcfce7 !important;
+            border-color: #16a34a !important;
+            color: #15803d;
+        }
+
+        .opt-btn.incorrect {
+            background: #fee2e2 !important;
+            border-color: #dc2626 !important;
+            color: #991b1b;
+        }
+
+        .chat-box {
+            background: linear-gradient(135deg, #059669, #047857);
+            color: white;
+            padding: 20px;
+            border-radius: 18px;
+        }
+
+        .chat-box h4 {
+            font-family: 'Fredoka', cursive;
+            font-size: 20px;
+            margin-bottom: 8px;
+            color: #fde68a;
+        }
+
+        .chat-textarea {
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            border: none;
+            margin-top: 10px;
+            font-weight: 600;
+            outline: none;
+            resize: vertical;
+        }
+
+        .score-card {
+            background: linear-gradient(135deg, #065f46 0%, #047857 100%);
+            color: white;
+            border: 4px solid #34d399;
+            border-radius: 24px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(4, 120, 87, 0.2);
+        }
+
+        .score-card h2 {
+            font-family: 'Fredoka', cursive;
+            font-size: 26px;
+            margin-bottom: 5px;
+        }
+
+        .score-num {
+            font-size: 52px;
+            font-weight: 800;
+            color: #fde68a;
+            font-family: 'Fredoka', cursive;
+            margin: 10px 0;
+        }
+
+        .print-btn {
+            background: #f59e0b;
+            color: white;
+            border: none;
+            padding: 10px 22px;
+            border-radius: 12px;
+            font-weight: 800;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: 0.2s;
+        }
+
+        .print-btn:hover {
+            background: #d97706;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Header -->
+    <div class="header-card">
+        <div class="school-info">
+            <div class="school-logo">
+                <div class="logo-icon">ب</div>
+                <div class="school-text">
+                    <div class="ar">مدارس البيارق الأهلية</div>
+                    <div class="en">AL-BAYARIQ PRIVATE SCHOOLS</div>
+                </div>
+            </div>
+            <div class="grade-badge">Grade 6 Elementary</div>
+        </div>
+
+        <div class="title-badge">Reading Time: An Experience Like No Other</div>
+
+        <div class="teacher-box">
+            <p class="prep-title">Prepared by</p>
+            <h3>Mr. Mohamed Abdalla Abo Fahad</h3>
+        </div>
+    </div>
+
+    <!-- Student Name -->
+    <div class="student-section">
+        <label for="studentName">Student Name:</label>
+        <input type="text" id="studentName" placeholder="Type your name here..." oninput="updateStudentName()">
+    </div>
+
+    <!-- 1. Reading Story -->
+    <div class="section-card">
+        <div class="section-header">
+            <div class="sec-num">1</div>
+            <div class="sec-title">Listen & Read the Story</div>
+        </div>
+
+        <div class="story-grid">
+            <div class="story-part">
+                <div class="story-num">Part 1</div>
+                <div class="story-text">
+                    It was the Roberts family's first time in Egypt. They wanted to try something different, so they <b>booked</b> a desert tour. They <b>set off</b> early one morning in a special jeep. Mike was excited because the guide told him that they might ride camels later that day. An hour later, Mike began to feel bored. "Be <b>patient</b>, Mike," his mother said to him.
+                </div>
+                <button class="audio-btn" onclick="speakText(`It was the Roberts family's first time in Egypt. They wanted to try something different, so they booked a desert tour. They set off early one morning in a special jeep. Mike was excited because the guide told him that they might ride camels later that day. An hour later, Mike began to feel bored. Be patient, Mike, his mother said to him.`)">🔊 Listen Part 1</button>
+            </div>
+
+            <div class="story-part">
+                <div class="story-num">Part 2</div>
+                <div class="story-text">
+                    Suddenly, they heard a strange sound and the jeep stopped. "The jeep has <b>broken down</b>. I'll have to fix it," said the guide. "Oh no! It's getting so hot!" <b>complained</b> Mike. An hour later, they were still in the desert. "Help has arrived!" said the guide.
+                </div>
+                <button class="audio-btn" onclick="speakText(`Suddenly, they heard a strange sound and the jeep stopped. The jeep has broken down. I will have to fix it, said the guide. Oh no! It is getting so hot! complained Mike. An hour later, they were still in the desert. Help has arrived! said the guide.`)">🔊 Listen Part 2</button>
+            </div>
+
+            <div class="story-part">
+                <div class="story-num">Part 3</div>
+                <div class="story-text">
+                    A group of men on camels rode up to them. They were very friendly. They greeted everyone and then worked together to <b>put up</b> a tent to protect everyone from the sun. They gave everyone fresh water and dates, and then they helped the guide work on the jeep. Mike looked at the tall camels. "Can I ride one?" he asked. "Wow! This is awesome!" said Mike happily.
+                </div>
+                <button class="audio-btn" onclick="speakText(`A group of men on camels rode up to them. They were very friendly. They greeted everyone and then worked together to put up a tent to protect everyone from the sun. They gave everyone fresh water and dates, and then they helped the guide work on the jeep. Mike looked at the tall camels. Can I ride one? he asked. Wow! This is awesome! said Mike happily.`)">🔊 Listen Part 3</button>
+            </div>
+
+            <div class="story-part">
+                <div class="story-num">Part 4</div>
+                <div class="story-text">
+                    A while later the jeep was ready. "Thank you for all your help," said the guide to the men. "You're welcome. We are always here to help when we can," one of the men answered. "Who were those men who helped us?" "They're Bedouins. They know how to survive in the desert," the guide answered. "They were very kind and friendly. They're amazing!" said Mike.
+                </div>
+                <button class="audio-btn" onclick="speakText(`A while later the jeep was ready. Thank you for all your help, said the guide to the men. You are welcome. We are always here to help when we can, one of the men answered. Who were those men who helped us? They are Bedouins. They know how to survive in the desert, the guide answered. They were very kind and friendly. They are amazing! said Mike.`)">🔊 Listen Part 4</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. Vocabulary Matching (6 Marks) -->
+    <div class="section-card">
+        <div class="section-header">
+            <div class="sec-num">2</div>
+            <div class="sec-title">Match Words with Definitions (6 Marks)</div>
+        </div>
+        <div class="match-grid" id="matchGrid"></div>
+    </div>
+
+    <!-- 3. Text Comprehension Questions (6 Marks) -->
+    <div class="section-card">
+        <div class="section-header">
+            <div class="sec-num">3</div>
+            <div class="sec-title">Read Again & Answer (6 Marks)</div>
+        </div>
+        <div id="fullQuestions"></div>
+    </div>
+
+    <!-- 4. Multiple Choice Quiz (6 Marks) -->
+    <div class="section-card">
+        <div class="section-header">
+            <div class="sec-num">4</div>
+            <div class="sec-title">Quick Review Quiz (6 Marks)</div>
+        </div>
+        <div id="mcqQuiz"></div>
+    </div>
+
+    <!-- 5. Discussion & Opinion (2 Marks) -->
+    <div class="section-card">
+        <div class="section-header">
+            <div class="sec-num">5</div>
+            <div class="sec-title">Let's Chat & Reflect (2 Marks)</div>
+        </div>
+
+        <div class="chat-box">
+            <h4>💬 Let's Chat!</h4>
+            <p>Why is it important to be helpful? How would you feel if you were in a situation like Mike's?</p>
+            <textarea class="chat-textarea" id="chatInput" rows="3" placeholder="Type your opinion here..." oninput="checkChat()"></textarea>
+        </div>
+    </div>
+
+    <!-- Score Certificate -->
+    <div class="score-card">
+        <h2>Certificate of Completion</h2>
+        <p>Student: <span id="displayName" style="color: #fde68a; font-weight: 800;">Student</span></p>
+        <div class="score-num"><span id="scoreVal">0</span> / 20</div>
+        <p id="certMsg">Answer all sections to achieve your full mark (20/20)!</p>
+        <button class="print-btn" onclick="window.print()">🖨️ Print Certificate</button>
+    </div>
+</div>
+
+<script>
+    const vocabData = [
+        { word: '1. book (v.)', def: 'F. to buy tickets for an activity in the future', val: 'F' },
+        { word: '2. set off', def: 'A. to begin a trip', val: 'A' },
+        { word: '3. patient', def: 'E. being able to wait a long time without becoming angry', val: 'E' },
+        { word: '4. break down', def: 'C. to stop working', val: 'C' },
+        { word: '5. complain', def: 'B. to say that you don\'t like something', val: 'B' },
+        { word: '6. put up', def: 'D. to build something that stands', val: 'D' }
+    ];
+
+    const allDefs = [
+        { id: 'A', text: 'A. to begin a trip' },
+        { id: 'B', text: 'B. to say that you don\'t like something' },
+        { id: 'C', text: 'C. to stop working' },
+        { id: 'D', text: 'D. to build something that stands' },
+        { id: 'E', text: 'E. being able to wait without getting angry' },
+        { id: 'F', text: 'F. to buy tickets for an activity in advance' }
+    ];
+
+    const textQuestions = [
+        { q: "1. Why did the Roberts family book a desert tour?", model: "Because they wanted to try something different." },
+        { q: "2. Why was Mike excited when they set off?", model: "Because the guide told him that they might ride camels." },
+        { q: "3. Why did Mike get bored?", model: "Because they had been driving in the desert for more than an hour." },
+        { q: "4. What happened to the jeep?", model: "The jeep broke down." },
+        { q: "5. What did the men give everyone when they arrived?", model: "They gave everyone fresh water and dates." },
+        { q: "6. Who were the men that helped the Roberts family?", model: "They were Bedouins who know how to survive in the desert." }
+    ];
+
+    const mcqData = [
+        { q: "1. The Roberts family went on a tour in _____.", opts: ["Egypt", "London", "Mexico"], ans: 0 },
+        { q: "2. The jeep _____ after making a strange sound.", opts: ["drove fast", "broke down", "turned right"], ans: 1 },
+        { q: "3. The men put up a _____ to protect everyone from the sun.", opts: ["house", "tent", "car"], ans: 1 },
+        { q: "4. What animal did Mike ride in the desert?", opts: ["A horse", "A camel", "A donkey"], ans: 1 },
+        { q: "5. Bedouins know how to _____ in the desert.", opts: ["survive", "swim", "fly"], ans: 0 },
+        { q: "6. Mike described the Bedouin men as _____.", opts: ["rude", "amazing and kind", "scary"], ans: 1 }
+    ];
+
+    let userScore = 0;
+    let answeredSet = new Set();
+
+    function speakText(text) {
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.cancel();
+            const speech = new SpeechSynthesisUtterance(text);
+            speech.lang = 'en-US';
+            speech.rate = 0.9;
+            window.speechSynthesis.speak(speech);
+        }
+    }
+
+    function renderVocabMatch() {
+        const grid = document.getElementById('matchGrid');
+        grid.innerHTML = vocabData.map((item, idx) => `
+            <div class="match-row">
+                <span class="word-badge">${item.word}</span>
+                <select class="match-select" id="v-sel-${idx}" onchange="checkVocab(${idx})">
+                    <option value="">Select Definition...</option>
+                    ${allDefs.map(d => `<option value="${d.id}">${d.text}</option>`).join('')}
+                </select>
+            </div>
+        `).join('');
+    }
+
+    function checkVocab(idx) {
+        const sel = document.getElementById(`v-sel-${idx}`);
+        if (sel.value === vocabData[idx].val) {
+            sel.style.borderColor = "#16a34a";
+            sel.style.backgroundColor = "#dcfce7";
+            if (!answeredSet.has(`v-${idx}`)) {
+                answeredSet.add(`v-${idx}`);
+                userScore++;
+                updateScoreDisplay();
+            }
+        } else {
+            sel.style.borderColor = "#dc2626";
+            sel.style.backgroundColor = "#fee2e2";
+        }
+    }
+
+    function renderFullQuestions() {
+        const container = document.getElementById('fullQuestions');
+        container.innerHTML = textQuestions.map((item, idx) => `
+            <div class="quiz-item">
+                <div class="quiz-q">${item.q}</div>
+                <input type="text" class="quiz-input" id="q-in-${idx}" placeholder="Type your answer here...">
+                <button class="ans-btn" onclick="showModelAns(${idx})">Check Answer</button>
+                <div class="model-ans" id="ans-box-${idx}">💡 Model Answer: ${item.model}</div>
+            </div>
+        `).join('');
+    }
+
+    function showModelAns(idx) {
+        document.getElementById(`ans-box-${idx}`).style.display = "block";
+        if (!answeredSet.has(`q-${idx}`)) {
+            answeredSet.add(`q-${idx}`);
+            userScore++;
+            updateScoreDisplay();
+        }
+    }
+
+    function renderMCQ() {
+        const container = document.getElementById('mcqQuiz');
+        container.innerHTML = mcqData.map((item, idx) => `
+            <div class="quiz-item">
+                <div class="quiz-q">${item.q}</div>
+                <div class="quiz-options">
+                    ${item.opts.map((opt, oIdx) => `
+                        <button class="opt-btn" id="mcq-${idx}-opt-${oIdx}" onclick="checkMCQ(${idx}, ${oIdx})">${opt}</button>
+                    `).join('')}
+                </div>
+            </div>
+        `).join('');
+    }
+
+    function checkMCQ(qIdx, selectedOpt) {
+        const q = mcqData[qIdx];
+        const correctOpt = q.ans;
+
+        q.opts.forEach((_, oIdx) => {
+            const btn = document.getElementById(`mcq-${qIdx}-opt-${oIdx}`);
+            btn.disabled = true;
+            if (oIdx === correctOpt) {
+                btn.classList.add('correct');
+            } else if (oIdx === selectedOpt) {
+                btn.classList.add('incorrect');
+            }
+        });
+
+        if (selectedOpt === correctOpt && !answeredSet.has(`mcq-${qIdx}`)) {
+            answeredSet.add(`mcq-${qIdx}`);
+            userScore++;
+            updateScoreDisplay();
+        }
+    }
+
+    function checkChat() {
+        const val = document.getElementById('chatInput').value.trim();
+        if (val.length > 5 && !answeredSet.has('chat')) {
+            answeredSet.add('chat');
+            userScore += 2; // 2 Marks for Chat
+            updateScoreDisplay();
+        }
+    }
+
+    function updateScoreDisplay() {
+        document.getElementById('scoreVal').innerText = userScore;
+        const name = document.getElementById('studentName').value || 'Student';
+        if (userScore >= 20) {
+            document.getElementById('certMsg').innerText = `Outstanding Job, ${name}! Perfect score 20/20!`;
+        }
+    }
+
+    function updateStudentName() {
+        const val = document.getElementById('studentName').value;
+        document.getElementById('displayName').innerText = val.trim() !== '' ? val : 'Student';
+    }
+
+    window.onload = function() {
+        renderVocabMatch();
+        renderFullQuestions();
+        renderMCQ();
+    };
+</script>
+
+</body>
+</html>
